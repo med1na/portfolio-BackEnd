@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface IHabilidadService {
 
-    public List<Habilidad> verPersonas ();
-    public void crearPersona (Habilidad per);
-    public void borrarPersona (Long idhabilidad);
-    public Habilidad buscarPersona (Long idhabilidad);
+    public List<Habilidad> verHabilidades ();
+    public void crearHabilidad (Habilidad per);
+    public void borrarHabilidad (Long idhabilidad);
+    public Habilidad buscarHabilidad (Long idhabilidad);
 }

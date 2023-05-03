@@ -7,8 +7,9 @@ import java.util.List;
 
 public interface ILaboralService {
 
-    public List<Laboral> verPersonas ();
-    public void crearPersona (Laboral per);
-    public void borrarPersona (Long idtrabajo);
-    public Laboral buscarPersona (Long idtrabajo);
+    public List<Laboral> verLabor ();
+    public void crearLabor (Laboral per);
+    public void modifLabor (Laboral per);
+    public void borrarLabor (Long idtrabajo);
+    public Laboral buscarLabor (Long idtrabajo);
 }

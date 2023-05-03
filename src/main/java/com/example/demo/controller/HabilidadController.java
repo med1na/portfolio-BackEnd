@@ -23,19 +23,19 @@ public class HabilidadController {
     private IHabilidadService persoServ;
     
     @PostMapping
-    public void agregarPersona (@RequestBody Habilidad pers){
-        persoServ.crearPersona(pers);
+    public void crearHabilidad (@RequestBody Habilidad pers){
+        persoServ.crearHabilidad(pers);
         
     }
     @GetMapping
     @ResponseBody
-    public List<Habilidad> verPersonas (){
-        return persoServ.verPersonas();
+    public List<Habilidad> verHabilidades (){
+        return persoServ.verHabilidades();
     }
     
     @DeleteMapping
-    public void borrarPersona (@PathVariable("idhabilidad") long idhabilidad){
-        persoServ.borrarPersona(idhabilidad);
+    public void borrarHabilidad (@PathVariable("idhabilidad") long idhabilidad){
+        persoServ.borrarHabilidad(idhabilidad);
     }
     
 }

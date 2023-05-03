@@ -11,26 +11,27 @@ import org.springframework.stereotype.Service;
 public class HabilidadService implements IHabilidadService{
 
     @Autowired
-    public HabilidadRepository persoRepo;
+    public HabilidadRepository habilidadesRepo;
     
     @Override
-    public List<Habilidad> verPersonas() {
-        return persoRepo.findAll();
+    public List<Habilidad> verHabilidades() {
+        return habilidadesRepo.findAll();
     }
 
     @Override
-    public void crearPersona(Habilidad per) {
-        persoRepo.save(per);
+    public Habilidad buscarHabilidad(Long idhabilidad) {
+        return habilidadesRepo.findById(idhabilidad).orElse(null);
     }
 
     @Override
-    public void borrarPersona(Long idhabilidad) {
-        persoRepo.deleteById(idhabilidad);
+    public void borrarHabilidad(Long idhabilidad) {
+        habilidadesRepo.deleteById(idhabilidad);
+    }
+    
+    @Override
+    public void crearHabilidad(Habilidad per) {
+        habilidadesRepo.save(per);
     }
 
-    @Override
-    public Habilidad buscarPersona(Long idhabilidad) {
-        return persoRepo.findById(idhabilidad).orElse(null);
-    }
     
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,19 +24,24 @@ public class LaboralController {
     private ILaboralService persoServ;
     
     @PostMapping
-    public void agregarPersona (@RequestBody Laboral pers){
-        persoServ.crearPersona(pers);
-        
+    public void agregarLabor (@RequestBody Laboral pers){
+        persoServ.crearLabor(pers);
     }
+    
     @GetMapping
     @ResponseBody
-    public List<Laboral> verPersonas (){
-        return persoServ.verPersonas();
+    public List<Laboral> verLabor (){
+        return persoServ.verLabor();
     }
     
-    @DeleteMapping
-    public void borrarPersona (@PathVariable("idtrabajo") long idtrabajo){
-        persoServ.borrarPersona(idtrabajo);
+    @DeleteMapping("/{idtrabajo}")
+    public void borrarLabor (@PathVariable("idtrabajo") long idtrabajo){
+        persoServ.borrarLabor(idtrabajo);
     }
     
+    @PutMapping
+    public void modifLabor (@PathVariable Laboral pers){
+        persoServ.modifLabor(pers);   
+    }
+       
 }

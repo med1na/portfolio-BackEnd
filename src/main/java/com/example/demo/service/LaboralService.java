@@ -14,23 +14,28 @@ public class LaboralService implements ILaboralService{
     public LaboralRepository persoRepo;
     
     @Override
-    public List<Laboral> verPersonas() {
+    public List<Laboral> verLabor() {
         return persoRepo.findAll();
     }
 
     @Override
-    public void crearPersona(Laboral per) {
+    public void crearLabor(Laboral per) {
         persoRepo.save(per);
     }
 
     @Override
-    public void borrarPersona(Long idtrabajo) {
+    public void borrarLabor(Long idtrabajo) {
         persoRepo.deleteById(idtrabajo);
     }
 
     @Override
-    public Laboral buscarPersona(Long idtrabajo) {
+    public Laboral buscarLabor(Long idtrabajo) {
         return persoRepo.findById(idtrabajo).orElse(null);
+    }
+    
+    @Override
+    public void modifLabor(Laboral per) {
+        persoRepo.save(per);
     }
     
 }
