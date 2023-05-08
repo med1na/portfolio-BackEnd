@@ -4,6 +4,8 @@ import com.example.demo.model.Laboral;
 import com.example.demo.service.ILaboralService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/laboral")
+//@CrossOrigin(origins = "http://localhost:4200/")
 @CrossOrigin(origins = "https://portfolio-frontend-dmedina.web.app/")
 public class LaboralController {
     
@@ -35,13 +38,27 @@ public class LaboralController {
     }
     
     @DeleteMapping("/{idtrabajo}")
-    public void borrarLabor (@PathVariable("idtrabajo") long idtrabajo){
+    public void borrarLabor (@PathVariable("idtrabajo") Long idtrabajo){
         persoServ.borrarLabor(idtrabajo);
     }
     
-    @PutMapping
-    public void modifLabor (@PathVariable Laboral pers){
-        persoServ.modifLabor(pers);   
+    @GetMapping("/{idtrabajo}")
+    public ResponseEntity<Laboral> buscarLaborId (@PathVariable Long idtrabajo){
+        return ResponseEntity.ok(persoServ.buscarLabor(idtrabajo));
     }
-       
+    
+    
+    @PutMapping("/{idtrabajo}")
+    public ResponseEntity<Laboral> modifLabor(@RequestBody Laboral pers){
+         // return persoServ.modifLabor(pers);
+        
+         ResponseEntity<Laboral> response;
+        if (pers.getIdtrabajo() != null && persoServ.buscarLabor(pers.getIdtrabajo()) != null){
+            response= ResponseEntity.ok(persoServ.modifLabor(pers));
+        }else{
+            response= ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return response;
+
+    }
 }

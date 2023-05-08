@@ -19,8 +19,8 @@ public class LaboralService implements ILaboralService{
     }
 
     @Override
-    public void crearLabor(Laboral per) {
-        persoRepo.save(per);
+    public Laboral crearLabor(Laboral pers) {
+        return persoRepo.save(pers);
     }
 
     @Override
@@ -34,8 +34,15 @@ public class LaboralService implements ILaboralService{
     }
     
     @Override
-    public void modifLabor(Laboral per) {
-        persoRepo.save(per);
+    public Laboral modifLabor(Laboral pers) {
+        return persoRepo.save(pers);
+        
+       // Long idtrabajo = pers.getIdtrabajo();
+       //   if (idtrabajo != null && persoRepo.existsById(idtrabajo)) {
+       //      return persoRepo.save(pers);
+       // } else {
+             // mensaje error
+       //      return null;
+       //   }
     }
-    
 }
