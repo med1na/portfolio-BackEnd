@@ -15,6 +15,7 @@ com/example/demo/service/LaboralService.class
 com/example/demo/service/ILaboralService.class
 com/example/demo/repository/LaboralRepository.class
 com/example/demo/controller/PersonalController.class
+com/example/demo/ArgentinaProgramaApplication$1.class
 com/example/demo/repository/HabilidadRepository.class
 com/example/demo/service/EducacionService.class
 com/example/demo/repository/PersonaRepository.class
