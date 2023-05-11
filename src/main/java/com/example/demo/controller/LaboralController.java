@@ -48,7 +48,7 @@ public class LaboralController {
     }
     
     
-    @PutMapping("/{idtrabajo}")
+    @PutMapping
     public ResponseEntity<Laboral> modifLabor(@RequestBody Laboral pers){
          // return persoServ.modifLabor(pers);
         

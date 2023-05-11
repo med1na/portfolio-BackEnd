@@ -18,8 +18,8 @@ public class ArgentinaProgramaApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-                            registry.addMapping("/**").allowedOrigins("https://portfolio-frontend-dmedina.web.app").allowedMethods("*").allowedHeaders("*");
-                            //registry.addMapping("/**").allowedOrigins("http://localhost:4200").allowedMethods("*").allowedHeaders("*");
+                            //registry.addMapping("/**").allowedOrigins("https://portfolio-frontend-dmedina.web.app/").allowedMethods("*").allowedHeaders("*");
+                            registry.addMapping("/**").allowedOrigins("http://localhost:4200").allowedMethods("*").allowedHeaders("*");
 			}
 		};
 	}        
