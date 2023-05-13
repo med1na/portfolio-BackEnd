@@ -8,7 +8,6 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Getter @Setter
 @Entity
 @Table(name="persona")
@@ -21,17 +20,20 @@ public class Persona {
     private String nombre_usuario;
     private String contraseña;
     private String mail;
+    private String provincia;
+    private String telefono;
     
     public Persona(){
         
     }
     
-    public Persona(Long idusuarios, String nombre_usuario, String contraseña, String mail){
+    public Persona(Long idusuarios, String nombre_usuario, String contraseña, String mail, String provincia, String telefono){
         this.idusuarios=idusuarios;
         this.nombre_usuario=nombre_usuario;
         this.contraseña=contraseña;
         this.mail=mail;
-        
+        this.provincia=provincia;
+        this.telefono=telefono;
     }
     
 }

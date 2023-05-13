@@ -24,11 +24,6 @@ public class PersonaService implements IPersonaService{
     }
 
     @Override
-    public void borrarPersona(Long idusuarios) {
-        persoRepo.deleteById(idusuarios);
-    }
-
-    @Override
     public Persona buscarPersona(Long idusuarios) {
         return persoRepo.findById(idusuarios).orElse(null);
     }
