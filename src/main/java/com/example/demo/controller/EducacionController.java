@@ -4,11 +4,14 @@ import com.example.demo.model.Educacion;
 import com.example.demo.service.IEducacionService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,19 +27,34 @@ public class EducacionController {
     private IEducacionService persoServ;
     
     @PostMapping
-    public void agregarPersona (@RequestBody Educacion pers){
-        persoServ.crearPersona(pers);
-        
+    public void agregarEducacion (@RequestBody Educacion pers){
+        persoServ.crearEducacion(pers);
     }
+    
     @GetMapping
     @ResponseBody
-    public List<Educacion> verPersonas (){
-        return persoServ.verPersonas();
+    public List<Educacion> verEducacion (){
+        return persoServ.verEducacion();
     }
     
-    @DeleteMapping
-    public void borrarPersona (@PathVariable("ideducacion") long ideducacion){
-        persoServ.borrarPersona(ideducacion);
+    @DeleteMapping("/{ideducacion}")
+    public void borrarEducacion (@PathVariable("ideducacion") long ideducacion){
+        persoServ.borrarEducacion(ideducacion);
     }
     
+    @GetMapping("/{ideducacion}")
+    public ResponseEntity<Educacion> buscarEducacionId (@PathVariable Long ideducacion){
+        return ResponseEntity.ok(persoServ.buscarEducacion(ideducacion));
+    }
+
+    @PutMapping
+    public ResponseEntity<Educacion> modifLabor(@RequestBody Educacion pers){
+         ResponseEntity<Educacion> response;
+        if (pers.getIdeducacion() != null && persoServ.buscarEducacion(pers.getIdeducacion()) != null){
+            response= ResponseEntity.ok(persoServ.modifEducacion(pers));
+        }else{
+            response= ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    return response;
+    }
 }

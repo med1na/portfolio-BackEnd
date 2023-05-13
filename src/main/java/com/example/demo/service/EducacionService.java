@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class EducacionService implements IEducacionService{
 
@@ -14,23 +13,27 @@ public class EducacionService implements IEducacionService{
     public EducacionRepository persoRepo;
     
     @Override
-    public List<Educacion> verPersonas() {
+    public List<Educacion> verEducacion() {
         return persoRepo.findAll();
     }
 
     @Override
-    public void crearPersona(Educacion per) {
-        persoRepo.save(per);
+    public Educacion crearEducacion(Educacion per) {
+        return persoRepo.save(per);
     }
 
     @Override
-    public void borrarPersona(Long ideducacion) {
+    public void borrarEducacion(Long ideducacion) {
         persoRepo.deleteById(ideducacion);
     }
 
     @Override
-    public Educacion buscarPersona(Long ideducacion) {
+    public Educacion buscarEducacion(Long ideducacion) {
         return persoRepo.findById(ideducacion).orElse(null);
     }
     
+    @Override
+    public Educacion modifEducacion(Educacion pers) {
+        return persoRepo.save(pers);
+    }
 }
